@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pharma.ai-investment-research.net/sitemap.xml

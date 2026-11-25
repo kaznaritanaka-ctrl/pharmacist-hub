@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>薬剤師の資産形成・起業・FIREのための総合支援 | 薬剤師ハブ</title>
 <meta name="description" content="薬剤師が資産形成・起業・FIREを目指すための総合支援サイトです。仕事選び、自分の事業、不動産投資、株式投資を結びつける組み立ての地図と、資産寿命シミュレータなどの道具をまとめています。">
+<link rel="canonical" href="https://pharma.ai-investment-research.net/">
+<meta property="og:title" content="薬剤師の資産形成・起業・FIREのための総合支援 | 薬剤師ハブ">
+<meta property="og:description" content="薬剤師が資産形成・起業・FIREを目指すための総合支援サイトです。仕事選び、自分の事業、不動産投資、株式投資を結びつける組み立ての地図と、資産寿命シミュレータなどの道具をまとめています。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pharma.ai-investment-research.net/">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2323785f'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='white'%3E%E8%96%AC%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,9 +22,9 @@
       <a href="strategy.html">1億円への戦略</a>
       <a href="simulator.html">資産寿命シミュレータ</a>
       <a href="land.html">土地の未来図</a>
-      <a href="about.html">運営者について</a>
-      <a href="privacy.html">プライバシーポリシー</a>
-      <a href="contact.html">お問い合わせ</a>
+      <a class="nav-sub" href="about.html">運営者について</a>
+      <a class="nav-sub" href="privacy.html">プライバシーポリシー</a>
+      <a class="nav-sub" href="contact.html">お問い合わせ</a>
     </nav>
   </div>
 </header>
@@ -26,10 +33,10 @@
   <div class="wrap">
     <h1>薬剤師の資産形成・起業・FIREを目指すための総合支援</h1>
     <p class="lead">このサイトは、薬剤師として働きながら資産形成を進め、将来の選択肢を広げたい方のための情報をまとめた場所です。運営者自身が、会社員薬剤師として働きながら2025年に金融資産1億円に到達し、2026年にFIREした経験をもとに、使える道具と判断の記録を公開しています。</p>
-    <p>扱うのは、特別な裏技ではありません。仕事選び、自分の事業、不動産投資、株式投資という4つの部品を、並べるのではなく結びつけて使う組み立てを扱います。再現性の高いレシピではないことも、各ページで明記しています。</p>
+    <p>扱うのは、特別な裏技ではありません。仕事選び、自分の事業、不動産投資、株式投資という4つの部品を、並べるのではなく結びつけて使う組み立てを扱います。再現性の高いレシピではないことも、先に明記しておきます。</p>
 
     <h2 id="map">組み立ての地図 ― 4つの部品はこう噛み合う</h2>
-    <p>このサイトの全体像は、戦略記事で書いた組み立てそのものです。労働力、株式投資、不動産投資、スモールビジネスの4つの部品を、どう結びつけるかを示します。</p>
+    <p>このサイトの全体像は、戦略記事で書いた組み立てそのものです。仕事選び、不動産投資、自分の事業、株式投資という4つの部品を、どう結びつけるかを示します。</p>
 
     <div class="map-flow">
       <div class="map-node">
@@ -38,27 +45,32 @@
         <p class="map-link"><a href="strategy.html#work">転職情報を見る（戦略記事「1. 薬剤師としての労働力を生かす」）</a></p>
       </div>
 
-      <div class="map-arrow"><span class="arrow-mark">↓</span>安定した給与が、信用力を生む</div>
-
       <div class="map-pair">
-        <div class="map-node">
-          <h3>不動産投資</h3>
-          <p>信用力の掛け算です。給与所得があるうちは、薬剤師の属性を信用力として使えます。その信用力をレバレッジに変えるのがこの部品です。相続した土地や実家の活用を考える入口として「土地の未来図」も用意しています。</p>
-          <p class="map-link"><a href="land.html">土地の未来図を見る</a></p>
+        <div class="map-branch">
+          <div class="map-arrow"><span class="arrow-mark" aria-hidden="true">↓</span>安定した給与が信用力を生み、不動産の元手になる</div>
+          <div class="map-node">
+            <h3>不動産投資</h3>
+            <p>信用力の掛け算です。給与所得があるうちは、薬剤師の属性を信用力として使えます。その信用力をレバレッジに変えるのがこの部品です。相続した土地や実家の活用を考える入口として「土地の未来図」も用意しています。</p>
+            <p class="map-link"><a href="land.html">土地の未来図を見る</a></p>
+          </div>
         </div>
-        <div class="map-node">
-          <h3>自分の事業（スモールビジネス）</h3>
-          <p>キャッシュフローの掛け算です。労働は時間の切り売りで上限がありますが、小さな事業を持つと、入金のもう1本の柱ができます。大きく張らず、小さく始めて、芽が出たものに資金を寄せます。</p>
-          <p class="map-link"><a href="strategy.html">戦略記事「4. AIで小さな事業を複数試す」を見る</a></p>
+        <div class="map-branch">
+          <div class="map-arrow"><span class="arrow-mark" aria-hidden="true">↓</span>給与の入金が、事業を小さく試す余地を生む</div>
+          <div class="map-node">
+            <h3>自分の事業（スモールビジネス）</h3>
+            <p>キャッシュフローの掛け算です。労働は時間の切り売りで上限がありますが、小さな事業を持つと、入金のもう1本の柱ができます。大きく張らず、小さく始めて、芽が出たものに資金を寄せます。</p>
+            <p class="map-link"><a href="strategy.html#business">戦略記事「4. AIで小さな事業を複数試す」を見る</a></p>
+          </div>
         </div>
       </div>
 
-      <div class="map-arrow"><span class="arrow-mark">↓</span>給与・不動産・事業から得られた資金のうち、余剰は株式へ</div>
+      <div class="map-arrow"><span class="arrow-mark" aria-hidden="true">↓</span>給与・不動産・事業から得られた資金のうち、余剰は株式へ</div>
 
       <div class="map-node">
         <h3>株式投資</h3>
-        <p>最終の受け皿です。低コストのインデックスを土台に元本を置き、置かれた元本が時間と相場の中で育つのを待ちます。役割は「増やす」ことより「置いておく」ことです。</p>
-        <p class="map-link"><a href="https://note.com/tanaka936">投資の記録を見る（note）</a>／<a href="simulator.html">資産寿命シミュレータで計算する</a></p>
+        <p>最終の受け皿です。低コストのインデックスを中心に元本を置き、置かれた元本が時間と相場の中で育つのを待ちます。役割は「増やす」ことより「置いておく」ことです。</p>
+        <p class="map-link"><a href="https://note.com/tanaka936">投資の記録を見る（note）</a></p>
+        <p class="map-link"><a href="simulator.html">資産寿命シミュレータで計算する</a></p>
       </div>
 
       <div class="map-goal">
@@ -67,28 +79,28 @@
     </div>
     <p class="caption">この組み立ての詳しい考え方は、記事「<a href="strategy.html">AI時代にFIREを目指す薬剤師へ。私が考える1億円への戦略</a>」と、note のクラスタ記事に書いています。</p>
 
-    <div class="ad-slot" aria-label="広告枠">
-      <span class="ad-label">広告</span>
+    <div class="step-slot" aria-label="広告枠">
+      <span class="step-label">広告</span>
       <p>広告スペース（準備中）</p>
     </div>
 
-    <h2>このサイトの5つの部品</h2>
+    <h2>このサイトの5つのコンテンツ</h2>
     <div class="cards">
       <a class="card" href="simulator.html">
         <h3>資産寿命シミュレータ</h3>
-        <p>形成期と取り崩し期で資産配分を変えながら、資産が何歳まで持つかをモンテカルロ計算で確認できる無償のツールです。</p>
+        <p>形成期と取り崩し期で資産配分を変えながら、資産が何歳まで持つかをモンテカルロ計算で確認できる無料のツールです。お金の寿命を先に計算する、このサイトの指針となるコンテンツです。</p>
       </a>
       <a class="card" href="strategy.html">
         <h3>1億円への戦略（記事）</h3>
-        <p>20代の新卒薬剤師が20年後に純資産1億円を目指すなら、どの部品をどう組み立てるのが現実的か。運営者の考えを分解した記事です。</p>
+        <p>20代の新卒薬剤師が20年後に純資産1億円を目指すなら、どの部品をどう組み立てるのが現実的か。運営者の考えを分解した記事の要約です（全文は note）。</p>
       </a>
       <a class="card" href="strategy.html#work">
         <h3>転職情報</h3>
-        <p>転職はFIREの手段の一つです。条件の見方や、選択肢を持っておくことの意味など、転職を資産形成の部品として扱う情報をまとめています。</p>
+        <p>転職はFIREの手段の一つです。条件の見方や、選択肢を持っておくことの意味を、戦略記事の「1. 薬剤師としての労働力を生かす」にまとめています。</p>
       </a>
       <a class="card" href="land.html">
         <h3>土地の未来図</h3>
-        <p>相続した土地や実家の土地の活用を考えるときの入口です。土地の形と用途から、建物の提案を3Dで確認できる無償のサービスです。</p>
+        <p>相続した土地や実家の土地の活用を考えるときの入口です。土地の形と用途から、建物の提案を3Dで確認できる無料のサービスです。</p>
       </a>
       <a class="card" href="https://note.com/tanaka936">
         <h3>投資コンテンツ（note）</h3>
@@ -103,8 +115,8 @@
       <li>収益や成果を保証する表現は使いません。投資判断・キャリアの判断は、ご自身の状況に合わせて行ってください。</li>
     </ul>
 
-    <div class="ad-slot" aria-label="広告枠">
-      <span class="ad-label">広告</span>
+    <div class="step-slot" aria-label="広告枠">
+      <span class="step-label">広告</span>
       <p>広告スペース（準備中）</p>
     </div>
   </div>

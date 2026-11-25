@@ -1,7 +1,7 @@
 /* style.css — 薬剤師ハブ（pharma.ai-investment-research.net）共通スタイル
-   2026-11-25 改修版：モバイルファースト、全ページ統一デザイン、5部品構成対応。
-   値は ~/workspace/your_files/design-tokens.css（v0.1）に準拠。外部向けは DADS 基調。
+   モバイルファースト、全ページ統一デザイン。
    色は役割名（var(--…)）で参照し、hex の直書きは :root 内だけに限る。
+   リンクは青＋下線、アクション要素は緑、という役割分担。
    設計の優先順位: (1) スマホ幅（〜430px）での読みやすさ (2) タップ領域 44px 以上
    (3) 横スクロールを出さない (4) PC幅では最大幅を絞って中央寄せ。 */
 
@@ -15,16 +15,15 @@
   --ink: #1f2a2e;
   --ink-soft: #5a6670;
   --line: #dfe6e1;
-  --warning: #8a5a14;
-  --warning-soft: #fbf1df;
   --link: #0017c1;
   --link-hover: #00118f;
 
-  --font-ja: "Noto Sans JP", "Hiragino Kaku Gothic ProN", system-ui, sans-serif;
+  --font-ja: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", YuGothic, "Meiryo", system-ui, sans-serif;
   --fs-display: 28px;
   --fs-title: 20px;
   --fs-heading: 16px;
   --fs-body: 16px;
+  --fs-small: 14px;
   --fs-caption: 13px;
   --lh-body: 1.7;
 
@@ -106,6 +105,10 @@ img { max-width: 100%; height: auto; }
   min-height: var(--tap);
   padding: 0 var(--sp-2);
 }
+/* モバイルではヘッダーは主要リンク中心にし、補助リンクはフッターに寄せる */
+@media (max-width: 767px) {
+  .site-nav a.nav-sub { display: none; }
+}
 @media (min-width: 768px) {
   .site-header .wrap {
     flex-direction: row;
@@ -147,7 +150,7 @@ li { margin-bottom: var(--sp-1); }
 .lead { font-size: var(--fs-heading); color: var(--ink); }
 .caption { font-size: var(--fs-caption); color: var(--ink-soft); }
 
-/* カード（トップの部品導線など）：モバイル1カラム、広い画面で複数カラム */
+/* カード（トップのコンテンツ導線など）：モバイル1カラム、広い画面で複数カラム */
 .cards {
   display: grid;
   grid-template-columns: 1fr;
@@ -168,11 +171,11 @@ li { margin-bottom: var(--sp-1); }
 }
 .card:hover { border-color: var(--accent); color: var(--ink); }
 .card h3 { margin-top: 0; color: var(--accent); }
-.card p { margin-bottom: 0; font-size: var(--fs-caption); color: var(--ink-soft); }
+.card p { margin-bottom: 0; font-size: var(--fs-small); color: var(--ink-soft); }
 
 /* ===== 組み立ての地図（トップページ） =====
-   #7 の構造：給与→信用→不動産／事業のCF→余剰は株式へ（最終の受け皿）。
-   一方向の縦フローで表し、循環にはしない。 */
+   給与→信用力→不動産／給与の入金→事業、という2本の流れから、
+   余剰は株式（最終の受け皿）へ。一方向の縦フローで表し、循環にはしない。 */
 .map-flow { margin: var(--sp-6) 0; }
 .map-node {
   background: var(--surface);
@@ -184,7 +187,7 @@ li { margin-bottom: var(--sp-1); }
 .map-node h3 { margin: 0 0 var(--sp-1); color: var(--accent); }
 .map-node p { margin-bottom: var(--sp-2); }
 .map-node p:last-child { margin-bottom: 0; }
-.map-node .map-link { font-size: var(--fs-caption); }
+.map-node .map-link { font-size: var(--fs-small); }
 .map-arrow {
   text-align: center;
   color: var(--ink-soft);
@@ -214,10 +217,10 @@ li { margin-bottom: var(--sp-1); }
 }
 .map-goal p:last-child { margin-bottom: 0; }
 
-/* ===== 広告スロット（プレースホルダ） =====
+/* ===== 広告枠（プレースホルダ） =====
    提携確定後に実タグへ差し替える前提の枠。スマホでも崩れないよう
    幅 100%・最小高さ固定で置く。シミュレータのページには置かない。 */
-.ad-slot {
+.step-slot {
   border: 1px dashed var(--ink-soft);
   background: var(--bg-soft);
   border-radius: var(--r-md);
@@ -231,7 +234,7 @@ li { margin-bottom: var(--sp-1); }
   gap: var(--sp-2);
   text-align: center;
 }
-.ad-slot .ad-label {
+.step-slot .step-label {
   font-size: var(--fs-caption);
   color: var(--ink-soft);
   border: 1px solid var(--ink-soft);
@@ -239,14 +242,14 @@ li { margin-bottom: var(--sp-1); }
   padding: 0 var(--sp-2);
   line-height: 1.6;
 }
-.ad-slot p {
+.step-slot p {
   margin: 0;
   font-size: var(--fs-caption);
   color: var(--ink-soft);
 }
 
 /* CTA ブロック（外部サービスへの入口を明確にするための面）
-   広告スロットとは別物。アフィリエイトはリンク先サービス側で受ける前提。 */
+   広告枠とは別物。アフィリエイトはリンク先サービス側で受ける前提。 */
 .cta-box {
   background: var(--accent-soft);
   border: 1px solid var(--accent);
@@ -277,13 +280,6 @@ li { margin-bottom: var(--sp-1); }
   margin: var(--sp-6) 0;
 }
 .note-box p:last-child { margin-bottom: 0; }
-.warn-box {
-  background: var(--warning-soft);
-  border: 1px solid var(--line);
-  border-radius: var(--r-md);
-  padding: var(--sp-4) var(--sp-6);
-  margin: var(--sp-6) 0;
-}
 
 /* ボタン風リンク（タップ領域 44px 以上を確保） */
 .btn {
