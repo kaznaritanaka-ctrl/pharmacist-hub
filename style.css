@@ -9,14 +9,17 @@
   --accent: #23785f;
   --on-accent: #ffffff;
   --accent-soft: #eaf5f0;
+  --navy: #1f3a5f;
+  --navy-deep: #152a46;
+  --navy-soft: #edf1f6;
   --bg: #ffffff;
-  --bg-soft: #f4f7f3;
+  --bg-soft: #f4f6f8;
   --surface: #ffffff;
-  --ink: #1f2a2e;
-  --ink-soft: #5a6670;
-  --line: #dfe6e1;
-  --link: #0017c1;
-  --link-hover: #00118f;
+  --ink: #1d2733;
+  --ink-soft: #55626e;
+  --line: #dde3e8;
+  --link: #1f3a5f;
+  --link-hover: #152a46;
 
   --font-ja: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", YuGothic, "Meiryo", system-ui, sans-serif;
   --fs-display: 28px;
@@ -137,7 +140,8 @@ h2 {
   line-height: 1.5;
   margin: var(--sp-8) 0 var(--sp-3);
   padding-bottom: var(--sp-2);
-  border-bottom: 2px solid var(--accent-soft);
+  color: var(--navy-deep);
+  border-bottom: 2px solid var(--navy-soft);
 }
 h3 {
   font-size: var(--fs-heading);
@@ -169,8 +173,8 @@ li { margin-bottom: var(--sp-1); }
   color: var(--ink);
   text-decoration: none;
 }
-.card:hover { border-color: var(--accent); color: var(--ink); }
-.card h3 { margin-top: 0; color: var(--accent); }
+.card:hover { border-color: var(--navy); color: var(--ink); }
+.card h3 { margin-top: 0; color: var(--navy); }
 .card p { margin-bottom: 0; font-size: var(--fs-small); color: var(--ink-soft); }
 
 /* ===== 組み立ての地図（トップページ） =====
@@ -180,11 +184,22 @@ li { margin-bottom: var(--sp-1); }
 .map-node {
   background: var(--surface);
   border: 1px solid var(--line);
-  border-left: 4px solid var(--accent);
+  border-left: 4px solid var(--navy);
   border-radius: var(--r-md);
   padding: var(--sp-4) var(--sp-6);
 }
-.map-node h3 { margin: 0 0 var(--sp-1); color: var(--accent); }
+.map-node h3 { margin: 0 0 var(--sp-1); color: var(--navy-deep); }
+.map-num {
+  display: inline-block;
+  background: var(--navy);
+  color: #fff;
+  font-size: var(--fs-caption);
+  font-weight: 700;
+  border-radius: var(--r-sm);
+  padding: 1px 8px;
+  margin-right: var(--sp-2);
+  vertical-align: 2px;
+}
 .map-node p { margin-bottom: var(--sp-2); }
 .map-node p:last-child { margin-bottom: 0; }
 .map-node .map-link { font-size: var(--fs-small); }
@@ -198,7 +213,7 @@ li { margin-bottom: var(--sp-1); }
   display: block;
   font-size: 20px;
   line-height: 1.2;
-  color: var(--accent);
+  color: var(--navy);
 }
 .map-pair {
   display: grid;
@@ -209,7 +224,7 @@ li { margin-bottom: var(--sp-1); }
   .map-pair { grid-template-columns: 1fr 1fr; }
 }
 .map-goal {
-  background: var(--accent-soft);
+  background: var(--navy-soft);
   border: 1px solid var(--line);
   border-radius: var(--r-md);
   padding: var(--sp-4) var(--sp-6);
@@ -302,6 +317,93 @@ dl.info dd { margin: 0 0 var(--sp-2); }
 @media (min-width: 600px) {
   dl.info { grid-template-columns: 8em 1fr; gap: var(--sp-2) var(--sp-4); }
   dl.info dd { margin: 0; }
+}
+
+/* ===== C案（コーポレート・構造系）コンポーネント ===== */
+/* サイト名の前に置く藍色の四角マーク（全ページ共通、CSSのみで付与） */
+.site-name::before {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background: var(--navy);
+  border-radius: 2px;
+  margin-right: var(--sp-2);
+}
+
+/* ヒーロー（トップのファーストビュー） */
+.hero {
+  background: var(--navy-soft);
+  border-radius: var(--r-lg);
+  padding: var(--sp-8) var(--sp-6);
+  margin-bottom: var(--sp-6);
+}
+@media (min-width: 768px) {
+  .hero { padding: var(--sp-12) var(--sp-8); }
+}
+.hero-eyebrow {
+  font-size: var(--fs-caption);
+  font-weight: 700;
+  letter-spacing: .08em;
+  color: var(--navy);
+  margin-bottom: var(--sp-3);
+}
+.hero h1 {
+  font-size: 30px;
+  line-height: 1.35;
+  letter-spacing: -.01em;
+  color: var(--navy-deep);
+  margin-bottom: var(--sp-3);
+}
+@media (min-width: 768px) {
+  .hero h1 { font-size: 40px; }
+}
+.hero-sub {
+  font-size: var(--fs-heading);
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: var(--sp-4);
+}
+.hero-lead { margin-bottom: var(--sp-6); }
+.hero-cta { display: flex; flex-wrap: wrap; gap: var(--sp-3); }
+.btn-ghost {
+  background: var(--surface);
+  color: var(--navy);
+  border: 1px solid var(--navy);
+}
+.btn-ghost:hover { color: var(--navy-deep); opacity: 1; background: var(--navy-soft); }
+
+/* 実績の帯（ヒーロー直下の事実表示） */
+.factband {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: var(--sp-4) var(--sp-6);
+  margin-bottom: var(--sp-8);
+  font-size: var(--fs-small);
+}
+@media (min-width: 700px) {
+  .factband { grid-template-columns: repeat(3, 1fr); gap: var(--sp-4); }
+}
+.factband .fact b { color: var(--navy); display: block; font-size: var(--fs-caption); letter-spacing: .05em; }
+
+/* 番号付きセクション見出し */
+.sec-head { display: flex; align-items: baseline; gap: var(--sp-3); }
+.sec-num {
+  font-size: var(--fs-title);
+  font-weight: 800;
+  color: var(--navy);
+  letter-spacing: .02em;
+}
+.sec-head h2 { margin-top: 0; border-bottom: none; padding-bottom: 0; }
+.sec-head { border-bottom: 2px solid var(--navy-soft); padding-bottom: var(--sp-2); margin: var(--sp-8) 0 var(--sp-3); }
+
+/* スマホだけ改行 */
+.br-sp { display: none; }
+@media (max-width: 767px) {
+  .br-sp { display: inline; }
 }
 
 /* フッター */
