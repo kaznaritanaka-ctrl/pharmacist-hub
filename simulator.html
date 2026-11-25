@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>資産寿命シミュレータのご案内 | 薬剤師ハブ</title>
+<meta name="description" content="形成期と取り崩し期で資産配分を変えながら資産寿命を確認する、無償のモンテカルロ・シミュレータの案内ページです。">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-name" href="index.html">薬剤師ハブ</a>
+    <nav class="site-nav">
+      <a href="strategy.html">1億円への戦略</a>
+      <a href="simulator.html">資産寿命シミュレータ</a>
+      <a href="land.html">土地の未来図</a>
+      <a href="about.html">運営者について</a>
+      <a href="privacy.html">プライバシーポリシー</a>
+      <a href="contact.html">お問い合わせ</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <h1>資産寿命シミュレータ</h1>
+    <p class="lead">「NISA貧乏か老後貧乏か」を感覚で悩む前に、一度計算してみるための道具です。資産形成の途中（形成期）と、FIRE後の取り崩し（取り崩し期）で資産配分を変えながら、資産が何歳まで持つかを年次モンテカルロ計算で確認できます。</p>
+
+    <h2>できること</h2>
+    <ul>
+      <li>形成期・取り崩し期ごとに、資産配分とプリセットを設定できます。</li>
+      <li>積立、支出、年金、売却時の実効税率、名目／実質リターンを条件として入れられます。</li>
+      <li>結果は資産枯渇の有無だけでなく、ご自身が指定した条件への抵触も「計画未達」として判定します。</li>
+      <li>シミュレーションの95%推定区間や、年齢別の未達経路、代表シナリオを確認できます。</li>
+      <li>条件は URL フラグメントで共有できます（共有先で保存済みの設定を自動で上書きしません）。</li>
+    </ul>
+
+    <h2>入手先と紹介記事</h2>
+    <p>シミュレータは無償で公開しています。ソースコードは GitHub で公開しており、計算モデルの前提もリポジトリ内の README に記載しています。</p>
+    <ul>
+      <li>ソースコード（GitHub）：<a href="https://github.com/kaznaritanaka-ctrl/asset-longevity-simulator-v1">kaznaritanaka-ctrl/asset-longevity-simulator-v1</a></li>
+      <li>紹介記事（note）：<a href="https://note.com/tanaka936/n/n0bbc6936c74b">「NISA貧乏か老後貧乏か、の前に一度計算すればいい（シミュレータあり）」</a> — 5,000万円FIREの条件を実際に入れ替えて検討した記録です。</li>
+    </ul>
+    <p>シミュレータ本体はこちらから開けます：<a href="https://willow-civic-drift-willow.grok.me/">資産寿命シミュレータ（公開中）</a></p>
+
+    <h2>計算モデルの前提（要点）</h2>
+    <ul>
+      <li>資産クラスごとの算術平均リターンと年率ボラティリティ、相関行列から、相関付き正規乱数で年次リターンを生成します。</li>
+      <li>年1回リバランスし、FIRE年齢の前後で配分を切り替えます。</li>
+      <li>税率は、収益の厳密な課税所得計算ではなく、売却額に対する実効税負担率として扱います。</li>
+      <li>本ツールは将来の成果を保証するものではなく、投資・税務・法務上の助言ではありません。</li>
+    </ul>
+
+    <div class="note-box">
+      <h3>データ出典と帰属表示</h3>
+      <p>計算の参照データには、株式・国債・手形、CPI、対ドル為替について <strong>Jordà–Schularick–Taylor Macrohistory Database</strong>（<a href="https://www.macrohistory.net/database/">macrohistory.net</a>）を使用しています。同データベースは <strong>CC BY-NC-SA 4.0</strong> の条件で提供されており、帰属表示・非営利利用・同一条件での共有が求められます。リターン系列の出典論文は Òscar Jordà, Katharina Knoll, Dmitry Kuvshinov, Moritz Schularick, Alan M. Taylor, “The Rate of Return on Everything, 1870–2015,” <em>Quarterly Journal of Economics</em> 134(3), 2019 です。金価格の長期系列には World Bank Commodity Price Data（The Pink Sheet）を参照しています。</p>
+      <p>このページには、広告およびアフィリエイトリンクは掲載していません。</p>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <nav>
+      <a href="index.html">トップ</a>
+      <a href="strategy.html">1億円への戦略</a>
+      <a href="simulator.html">資産寿命シミュレータ</a>
+      <a href="land.html">土地の未来図</a>
+      <a href="about.html">運営者について</a>
+      <a href="privacy.html">プライバシーポリシー</a>
+      <a href="contact.html">お問い合わせ</a>
+    </nav>
+    <span>薬剤師ハブ（pharma.ai-investment-research.net）</span>
+  </div>
+</footer>
+</body>
+</html>
