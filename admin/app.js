@@ -125,6 +125,17 @@
     return n;
   }
   function textOf(s) { return s.length > 120 ? s.slice(0, 118) + '…' : s; }
+  // 長い文は、変わった部分の前後だけを見せる
+  function focusDiff(a, b) {
+    if (a.length + b.length < 80) return [a, b];
+    var p = 0;
+    while (p < a.length && p < b.length && a[p] === b[p]) p++;
+    var q = 0;
+    while (q < a.length - p && q < b.length - p && a[a.length - 1 - q] === b[b.length - 1 - q]) q++;
+    var from = Math.max(0, p - 16);
+    var cut = function (x) { var end = Math.min(x.length, x.length - q + 16); return (from > 0 ? '…' : '') + x.slice(from, end) + (end < x.length ? '…' : ''); };
+    return [cut(a), cut(b)];
+  }
 
   function changeList() {
     var items = [];
@@ -148,8 +159,9 @@
         li.appendChild(b);
       }
       var w = document.createElement('span'); w.className = 'where'; w.textContent = it.where; li.appendChild(w);
-      var d = document.createElement('del'); d.textContent = textOf(it.before) || '（空）'; li.appendChild(d);
-      var n = document.createElement('ins'); n.textContent = textOf(it.after) || '（削除）'; li.appendChild(n);
+      var pair = focusDiff(it.before, it.after);
+      var d = document.createElement('del'); d.textContent = textOf(pair[0]) || '（空）'; li.appendChild(d);
+      var n = document.createElement('ins'); n.textContent = textOf(pair[1]) || '（削除）'; li.appendChild(n);
       el.appendChild(li);
     });
   }
