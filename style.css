@@ -35,8 +35,10 @@
   --focus: #ffd43d;
 
   --f-sans: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", YuGothic, Meiryo, system-ui, sans-serif;
-  --f-serif: "Instrument Serif", "Times New Roman", serif;
-  --f-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  /* 書体は全体で Zen Kaku Gothic New の1種類にそろえる（英字・数字・ラベルも同じ書体）。
+     見出しやラベルの違いは、太さ・大きさ・字間で付ける。 */
+  --f-serif: var(--f-sans);
+  --f-mono: var(--f-sans);
 
   --fs-xs: 12px;
   --fs-sm: 14px;
@@ -117,7 +119,7 @@ h1, h2, h3, h4 { margin: 0; font-weight: 700; line-height: 1.35; letter-spacing:
 .brand-name { display: flex; flex-direction: column; line-height: 1.15; }
 .brand-name b { font-size: 17px; letter-spacing: .06em; }
 .brand-name small { font-family: var(--f-mono); font-size: 10px; letter-spacing: .2em; color: var(--on-ink-soft); text-transform: uppercase; }
-.side-tagline { font-family: var(--f-serif); font-style: italic; font-size: 20px; line-height: 1.25; color: var(--on-ink-soft); margin: -8px 0 0; }
+.side-tagline { font-family: var(--f-serif); font-style: normal; font-size: 20px; line-height: 1.25; color: var(--on-ink-soft); margin: -8px 0 0; }
 .side-nav h2 { font-family: var(--f-mono); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--on-ink-soft); font-weight: 400; margin: 0 0 8px 12px; opacity: .8; }
 .side-nav ul { list-style: none; margin: 0 0 22px; padding: 0; }
 .side-nav li { margin: 0; }
@@ -208,7 +210,7 @@ h1, h2, h3, h4 { margin: 0; font-weight: 700; line-height: 1.35; letter-spacing:
 .hero h1 { font-size: var(--fs-3xl); line-height: 1.08; letter-spacing: -.02em; margin-bottom: 24px; }
 .hero h1 .line { display: block; overflow: hidden; padding-bottom: .04em; }
 .hero h1 .line > span { display: inline-block; }
-.hero-en { font-family: var(--f-serif); font-style: italic; font-size: clamp(24px, 2vw + 12px, 40px); color: var(--on-ink-soft); margin: 0 0 24px; line-height: 1.2; }
+.hero-en { font-family: var(--f-serif); font-style: normal; font-size: clamp(24px, 2vw + 12px, 40px); color: var(--on-ink-soft); margin: 0 0 24px; line-height: 1.2; }
 .hero-sub { font-size: var(--fs-md); font-weight: 700; margin: 0 0 14px; }
 .hero-lead { color: var(--on-ink-soft); max-width: 36em; margin-bottom: 36px; }
 .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; }
@@ -221,7 +223,7 @@ h1, h2, h3, h4 { margin: 0; font-weight: 700; line-height: 1.35; letter-spacing:
 .assembly .link { fill: none; stroke: var(--accent-glow); stroke-width: 1.2; stroke-dasharray: 4 6; animation: flow 1.6s linear infinite; }
 .assembly .core circle { fill: none; stroke: rgba(79,224,165,.45); }
 .assembly .core .pulse { animation: pulse 3.2s ease-out infinite; transform-origin: center; transform-box: fill-box; }
-.assembly .core text { fill: var(--on-ink); font-family: var(--f-serif); font-style: italic; }
+.assembly .core text { fill: var(--on-ink); font-family: var(--f-serif); font-style: normal; }
 .assembly .core .ja { font-family: var(--f-sans); font-style: normal; fill: var(--on-ink-soft); }
 .assembly .tile { animation: float 6s ease-in-out infinite; transform-box: fill-box; }
 .assembly .tile:nth-of-type(2) { animation-delay: -1.5s; }
@@ -237,7 +239,7 @@ h1, h2, h3, h4 { margin: 0; font-weight: 700; line-height: 1.35; letter-spacing:
 @media (min-width: 900px) { .stat { border-bottom: 0; padding-left: 22px; border-left: 1px solid var(--line-ink); } .stat:first-child { border-left: 0; padding-left: 0; } }
 .stat dt { color: var(--on-ink-soft); margin-bottom: 10px; }
 .stat dd { margin: 0; }
-.stat .big { font-family: var(--f-serif); font-size: clamp(42px, 3.4vw + 16px, 68px); line-height: 1; display: block; margin-bottom: 10px; }
+.stat .big { font-family: var(--f-serif); font-weight: 700; font-size: clamp(42px, 3.4vw + 16px, 68px); line-height: 1; display: block; margin-bottom: 10px; }
 .stat .big small { font-family: var(--f-sans); font-size: .3em; margin-left: .2em; }
 .stat .note { font-size: var(--fs-sm); color: var(--on-ink-soft); }
 
@@ -265,7 +267,7 @@ h1, h2, h3, h4 { margin: 0; font-weight: 700; line-height: 1.35; letter-spacing:
 .section-ink .sec-label .idx { color: var(--accent-glow); }
 .sec-label::after { content: ""; flex: 1; height: 1px; background: currentColor; opacity: .25; }
 .sec-title { font-size: var(--fs-2xl); line-height: 1.12; letter-spacing: -.02em; margin-bottom: 26px; }
-.sec-title .serif { font-style: italic; }
+.sec-title .serif { font-style: normal; }
 .sec-intro { font-size: var(--fs-md); color: var(--text-soft); max-width: 36em; }
 .section-ink .sec-intro { color: var(--on-ink-soft); }
 .statement { font-size: clamp(22px, 1.8vw + 13px, 38px); line-height: 1.65; font-weight: 700; letter-spacing: 0; max-width: 26em; }
@@ -278,7 +280,7 @@ h1, h2, h3, h4 { margin: 0; font-weight: 700; line-height: 1.35; letter-spacing:
 .map-list { list-style: none; margin: 0; padding: 0; }
 .map-item { margin: 0; padding: 34px 0; border-top: 1px solid var(--line-strong); display: grid; grid-template-columns: auto 1fr; gap: 8px 26px; }
 .map-item:last-child { border-bottom: 1px solid var(--line-strong); }
-.map-item .n { font-family: var(--f-serif); font-size: clamp(48px, 3.4vw + 18px, 80px); line-height: .9; color: var(--accent); grid-row: span 6; align-self: start; }
+.map-item .n { font-family: var(--f-serif); font-weight: 700; font-size: clamp(48px, 3.4vw + 18px, 80px); line-height: .9; color: var(--accent); grid-row: span 6; align-self: start; }
 .map-item .role { color: var(--text-soft); margin: 4px 0 0; }
 .map-item h3 { font-size: var(--fs-lg); margin: 0; }
 .map-item p { margin: 0; color: var(--text-soft); }
@@ -395,7 +397,7 @@ h1, h2, h3, h4 { margin: 0; font-weight: 700; line-height: 1.35; letter-spacing:
 .prose { max-width: 720px; font-size: 17px; line-height: 2; }
 .prose > h2 { font-size: var(--fs-lg); margin: 2.6em 0 .9em; padding-top: 1.2em; border-top: 1px solid var(--line-strong); display: flex; gap: 14px; align-items: baseline; }
 .prose > h2:first-child { margin-top: 0; }
-.prose > h2 .no { font-family: var(--f-serif); font-weight: 400; font-size: 1.5em; color: var(--accent); line-height: 1; }
+.prose > h2 .no { font-family: var(--f-serif); font-weight: 700; font-size: 1.5em; color: var(--accent); line-height: 1; }
 .prose > h3 { font-size: var(--fs-md); margin: 2em 0 .6em; }
 .prose a:not(.btn) { color: var(--navy); text-decoration: underline; }
 .prose a:not(.btn):hover { color: var(--accent); }
@@ -465,13 +467,13 @@ dl.info dd { margin: 0; padding: 4px 0 18px; border-bottom: 1px solid var(--line
 .footer-top { display: grid; gap: 40px; padding-bottom: 48px; border-bottom: 1px solid var(--line-ink); }
 @media (min-width: 900px) { .footer-top { grid-template-columns: 1.4fr 1fr 1fr; } }
 .footer-claim { font-size: var(--fs-xl); line-height: 1.25; color: var(--on-ink); font-weight: 700; margin: 0; }
-.footer-claim .serif { font-style: italic; color: var(--on-ink-soft); display: block; font-size: .7em; margin-top: 8px; }
+.footer-claim .serif { font-style: normal; color: var(--on-ink-soft); display: block; font-size: .7em; margin-top: 8px; }
 .site-footer h2 { font-family: var(--f-mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--on-ink-soft); font-weight: 400; margin-bottom: 12px; }
 .site-footer ul { list-style: none; margin: 0; padding: 0; }
 .site-footer li { margin: 0; }
 .site-footer a { color: var(--on-ink); text-decoration: none; display: inline-flex; align-items: center; min-height: 40px; }
 .site-footer a:hover { color: var(--accent-glow); }
-.footer-word { font-family: var(--f-serif); font-style: italic; color: var(--on-ink); font-size: clamp(52px, 10vw, 168px); line-height: .95; letter-spacing: -.03em; margin: 44px 0 28px; white-space: nowrap; overflow: hidden; }
+.footer-word { font-family: var(--f-serif); font-style: normal; font-weight: 700; color: var(--on-ink); font-size: clamp(52px, 10vw, 168px); line-height: .95; letter-spacing: -.02em; margin: 44px 0 28px; white-space: nowrap; overflow: hidden; }
 .footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; font-size: var(--fs-xs); }
 .footer-bottom a { min-height: 32px; color: var(--on-ink-soft); }
 
@@ -488,7 +490,7 @@ dl.info dd { margin: 0; padding: 4px 0 18px; border-bottom: 1px solid var(--line
 
 /* ---------- 404 ---------- */
 .not-found { min-height: 70vh; display: grid; place-items: center; text-align: center; background: var(--ink); color: var(--on-ink); padding: 80px 0; }
-.not-found .big { font-family: var(--f-serif); font-style: italic; font-size: clamp(96px, 18vw, 220px); line-height: 1; margin: 0 0 12px; }
+.not-found .big { font-family: var(--f-serif); font-style: normal; font-weight: 700; font-size: clamp(96px, 18vw, 220px); line-height: 1; margin: 0 0 12px; }
 
 @media print {
   .sidebar, .topbar, .rail, .ad, .anchor-ad, .site-footer, .toc-inline { display: none !important; }

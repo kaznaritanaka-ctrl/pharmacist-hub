@@ -22,6 +22,9 @@
   function jsonInner(s) { return JSON.stringify(s).slice(1, -1); }
   function escRe(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
 
+  // 画面で入れた改行（Enter）は、この文字で持ち、保存のときに <br> にする
+  var BR = '\u2028';
+
   var SKIP = { script: 1, style: 1, svg: 1, noscript: 1, iframe: 1, textarea: 1, button: 1, select: 1, template: 1 };
 
   // body の中の「文章」の位置を順番に取り出す
@@ -78,12 +81,12 @@
       var lead = s.raw.match(/^\s*/)[0];
       var trail = s.raw.match(/\s*$/)[0];
       var body = edits[i].replace(/^\s+|\s+$/g, '');
-      out = out.slice(0, s.start) + lead + esc(body) + (body ? trail : '') + out.slice(s.end);
+      out = out.slice(0, s.start) + lead + esc(body).split(BR).join('<br>') + (body ? trail : '') + out.slice(s.end);
     });
     // 本文の変更を構造化データ（FAQ など）にも反映
     idx.forEach(function (i) {
       var from = segs[i].text.trim();
-      var to = edits[i].trim();
+      var to = edits[i].split(BR).join('').trim();
       if (from && to) out = replaceInJsonLd(out, from, to, true); // 値がまるごと同じ文言のときだけ（見出し・FAQ など）
     });
     var cur = readMeta(src);
@@ -99,7 +102,7 @@
     return out;
   }
 
-  var Core = { decode: decode, esc: esc, segment: segment, readMeta: readMeta, apply: apply };
+  var Core = { BR: BR, decode: decode, esc: esc, segment: segment, readMeta: readMeta, apply: apply };
   if (typeof window === 'undefined') { globalThis.AdminCore = Core; return; }
 
   // ---------- 画面 ----------
@@ -143,7 +146,7 @@
     if (state.meta.title !== null) items.push({ where: 'タイトル', before: cur.title, after: state.meta.title });
     if (state.meta.desc !== null) items.push({ where: '説明文', before: cur.desc, after: state.meta.desc });
     Object.keys(state.edits).map(Number).sort(function (a, b) { return a - b; }).forEach(function (i) {
-      items.push({ where: state.labels[i] || '本文', before: state.segs[i].text.trim(), after: state.edits[i].trim(), seg: i });
+      items.push({ where: state.labels[i] || '本文', before: state.segs[i].text.trim(), after: state.edits[i].trim().split(BR).join(' ↵ '), seg: i });
     });
     return items;
   }
@@ -199,14 +202,50 @@
     return out;
   }
 
+  // 編集中の文章を取り出す（<br> は改行の印 BR に、カーソル用のゼロ幅文字は除く）
+  function spanText(el) {
+    var out = '';
+    el.childNodes.forEach(function (n) {
+      if (n.nodeType === 3) out += n.data.replace(/\u200B/g, '');
+      else if (n.nodeName === 'BR') out += BR;
+      else if (n.nodeType === 1) out += spanText(n);
+    });
+    return out;
+  }
+  function copySpan(from, to) {
+    to.textContent = '';
+    from.childNodes.forEach(function (n) { to.appendChild(n.cloneNode(true)); });
+  }
+  // カーソルの位置に改行（<br>）を入れる
+  function insertBreak(doc, sp) {
+    var sel = doc.getSelection();
+    if (!sel || !sel.rangeCount) return;
+    var r = sel.getRangeAt(0);
+    if (!sp.contains(r.startContainer)) return;
+    r.deleteContents();
+    var br = doc.createElement('br');
+    r.insertNode(br);
+    var next = br.nextSibling;
+    // 末尾の改行でもカーソルが次の行に行けるよう、ゼロ幅の文字を置く
+    if (!next || (next.nodeType === 3 && !next.data.replace(/\u200B/g, '').length && !next.nextSibling)) {
+      if (!next) { next = doc.createTextNode('\u200B'); br.parentNode.insertBefore(next, br.nextSibling); }
+    }
+    var nr = doc.createRange();
+    if (next && next.nodeType === 3) nr.setStart(next, next.data.charAt(0) === '\u200B' ? 1 : 0);
+    else nr.setStartAfter(br);
+    nr.collapse(true);
+    sel.removeAllRanges(); sel.addRange(nr);
+    onEdit(sp);
+  }
+
   function onEdit(sp) {
     var i = Number(sp.dataset.seg);
-    var val = sp.textContent;
+    var val = spanText(sp);
     var orig = state.segs[i].text;
     // 同じ文言の場所（目次など）にも同じ変更を映す
     var twins = state.twins[i] || [i];
     twins.forEach(function (j) {
-      (state.spans[j] || []).forEach(function (other) { if (other !== sp && other.textContent !== val) other.textContent = val; });
+      (state.spans[j] || []).forEach(function (other) { if (other !== sp && spanText(other) !== val) copySpan(sp, other); });
       if (val === orig) delete state.edits[j]; else state.edits[j] = val;
       (state.spans[j] || []).forEach(function (s) { s.classList.toggle('__chg', val !== orig); });
     });
@@ -254,7 +293,13 @@
     Object.keys(byText).forEach(function (key) { var g = byText[key]; if (g.length > 1) g.forEach(function (i2) { state.twins[i2] = g; }); });
 
     doc.addEventListener('input', function (e) { var sp2 = e.target.closest && e.target.closest('.__ed'); if (sp2) onEdit(sp2); });
-    doc.addEventListener('keydown', function (e) { if (e.key === 'Enter' && e.target.closest && e.target.closest('.__ed')) e.preventDefault(); });
+    doc.addEventListener('keydown', function (e) {
+      if (e.key !== 'Enter' || e.isComposing || e.keyCode === 229) return; // 日本語の変換確定の Enter はそのまま
+      var sp3 = e.target.closest && e.target.closest('.__ed');
+      if (!sp3) return;
+      e.preventDefault();
+      insertBreak(doc, sp3); // Enter でも Shift+Enter でも、その場で改行する
+    });
     doc.addEventListener('paste', function (e) {
       if (!(e.target.closest && e.target.closest('.__ed'))) return;
       e.preventDefault();
