@@ -1,4 +1,4 @@
-/* style.css — 薬剤師ハブ（pharma.ai-investment-research.net）共通スタイル
+/* style.css — FIRE薬剤師ラボ（pharma.ai-investment-research.net）共通スタイル
    モバイルファースト、全ページ統一デザイン。
    色は役割名（var(--…)）で参照し、hex の直書きは :root 内だけに限る。
    リンクは青＋下線、アクション要素は緑、という役割分担。
