@@ -2,5 +2,6 @@
 # AIエージェント向けの索引: https://pharma.ai-investment-research.net/llms.txt
 User-agent: *
 Allow: /
+Disallow: /admin
 
 Sitemap: https://pharma.ai-investment-research.net/sitemap.xml
