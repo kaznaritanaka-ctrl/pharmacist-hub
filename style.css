@@ -45,9 +45,9 @@
   --fs-lg: clamp(20px, 1.2vw + 13px, 26px);
   --fs-xl: clamp(28px, 2.4vw + 15px, 44px);
   --fs-2xl: clamp(36px, 4.4vw + 14px, 84px);
-  --fs-3xl: clamp(44px, 6.4vw + 12px, 120px);
+  --fs-3xl: clamp(40px, 3.9vw + 10px, 96px);
 
-  --side-w: 288px;
+  --side-w: 300px;
   --content-max: 1120px;
   --gutter: clamp(20px, 4vw, 56px);
   --sec-y: clamp(72px, 9vw, 140px);
@@ -124,7 +124,7 @@ h1, h2, h3, h4 { margin: 0; font-weight: 700; line-height: 1.35; letter-spacing:
 .side-nav a {
   display: grid; grid-template-columns: 28px 1fr auto; align-items: center; gap: 4px;
   min-height: 44px; padding: 0 12px; border-radius: 10px;
-  color: var(--on-ink-soft); text-decoration: none; font-size: 15px;
+  color: var(--on-ink-soft); text-decoration: none; font-size: 14px; white-space: nowrap;
   transition: background .2s, color .2s;
 }
 .side-nav a .no { font-family: var(--f-mono); font-size: 11px; color: var(--on-ink-soft); opacity: .7; }
