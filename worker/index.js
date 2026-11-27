@@ -40,6 +40,7 @@ export function htmlToMarkdown(html, path) {
     .replace(/<p class="fallback">[\s\S]*?<\/p>/g, '')
     .replace(/<span class="arr"[^>]*>[\s\S]*?<\/span>/g, '')
     .replace(/<nav class="breadcrumb[\s\S]*?<\/nav>/g, '')
+    .replace(/<span class="ad-label">[\s\S]*?<\/span>(?=\s*<span class="ad-title">|\s*<div class="ad-creative">)/g, '')
     .replace(/<div class="tool-frame-bar"[\s\S]*?<\/div>/g, '')
     .replace(/<li><b>([^<]*)<\/b>/g, '<li><b>$1</b>：')
     .replace(/<p class="sec-label[\s\S]*?<\/p>/g, '')
@@ -56,6 +57,7 @@ export function htmlToMarkdown(html, path) {
     .replace(/<p class="footer-word"[\s\S]*?<\/p>/g, '');
   // 提携済みの広告は PR と明示して残す
   s = s.replace(/<aside class="ad[^"]*"[^>]*>/g, '\n\n> **PR（広告）** ').replace(/<\/aside>/g, '\n\n');
+  s = s.replace(/<img[^>]*\balt="([^"]*)"[^>]*>/g, '$1');
   s = s.replace(/<iframe[^>]*src="([^"]*)"[^>]*title="([^"]*)"[^>]*><\/iframe>/g, '\n\n[ツール: $2]($1)\n\n');
   s = s.replace(/<a\b([^>]*)>([\s\S]*?)<\/a>/g, (m, a, text) => {
     const href = attr(' ' + a, 'href'); const t = text.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();

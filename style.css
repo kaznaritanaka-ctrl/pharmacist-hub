@@ -341,6 +341,12 @@ h1, h2, h3, h4 { margin: 0; font-weight: 700; line-height: 1.35; letter-spacing:
 .ad.is-pending .ad-title { color: var(--text-soft); }
 .ad.is-pending .btn { --_bg: transparent; --_fg: var(--text-faint); --_bd: var(--line-strong); pointer-events: none; }
 
+/* バナー広告（ASPのバナーをそのまま表示） */
+.ad.ad-banner { grid-template-columns: 1fr; }
+.ad-creative { line-height: 0; }
+.ad-creative a { display: inline-block; max-width: 100%; }
+.ad-creative img { max-width: 100%; height: auto; display: block; }
+.ad.ad-banner .ad-creative { justify-self: start; }
 /* 左パネルの広告（PC） */
 .ad-side { margin: 0; padding: 18px; grid-template-columns: 1fr; gap: 12px; background: var(--ink-2); border-color: var(--line-ink); color: var(--on-ink); }
 .ad-side .ad-label { color: var(--pr-ink); margin-bottom: 4px; }
@@ -349,6 +355,8 @@ h1, h2, h3, h4 { margin: 0; font-weight: 700; line-height: 1.35; letter-spacing:
 .ad-side p { color: var(--on-ink-soft); font-size: 12px; line-height: 1.7; }
 .ad-side .btn { width: 100%; justify-content: center; min-height: 40px; font-size: 13px; }
 .ad-side.is-pending { background: transparent; }
+.ad-side.ad-banner { padding: 0; gap: 8px; background: none; border: 0; }
+.ad-side.ad-banner .ad-label { margin: 0; }
 .ad-side.is-pending .ad-title { color: var(--on-ink-soft); }
 .ad-side.is-pending .btn { --_fg: var(--on-ink-soft); --_bd: var(--line-ink); }
 
@@ -374,6 +382,10 @@ h1, h2, h3, h4 { margin: 0; font-weight: 700; line-height: 1.35; letter-spacing:
   .anchor-ad.is-pending .btn { --_bg: transparent; --_fg: var(--text-faint); --_bd: var(--line-strong); pointer-events: none; }
   .anchor-ad .ad-close { position: absolute; top: -14px; right: 10px; width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--line-strong); background: var(--surface); color: var(--text-soft); font-size: 14px; line-height: 1; cursor: pointer; display: none; }
   .js .anchor-ad .ad-close { display: grid; place-items: center; }
+  
+  .anchor-ad.ad-banner { grid-template-columns: 1fr; justify-items: center; padding: 8px 12px calc(8px + env(safe-area-inset-bottom)); }
+  .anchor-ad.ad-banner .ad-label { position: absolute; top: -12px; left: 10px; margin: 0; }
+  .anchor-ad.ad-banner .ad-label b { box-shadow: 0 0 0 1px var(--line-strong); background: var(--surface); }
   .anchor-ad[hidden] { display: none; }
 }
 
