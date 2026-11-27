@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>文章の編集 | FIRE薬剤師ラボ 管理画面</title>
+<link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body>
+<header class="bar">
+  <div class="brand">FIRE薬剤師ラボ<span>管理画面</span></div>
+  <label class="pick"><span>ページ</span><select id="page" aria-label="編集するページ"></select></label>
+  <span id="mode" class="mode" hidden></span>
+  <div class="spacer"></div>
+  <span id="count" class="count">変更なし</span>
+  <button id="review" class="btn primary" type="button" disabled>確認して保存</button>
+</header>
+
+<div class="wrap">
+  <section class="stage" aria-label="ページのプレビュー">
+    <p class="hint">文章をクリックすると、その場で直せます。リンクやボタンは押しても移動しません。直した箇所は黄色になります。</p>
+    <div class="frame-box">
+      <iframe id="frame" sandbox="allow-same-origin" title="編集中のページ"></iframe>
+      <div id="loading" class="loading">読み込み中…</div>
+    </div>
+  </section>
+
+  <aside class="side" aria-label="ページ情報と変更点">
+    <h2>ページ情報</h2>
+    <label class="field">タイトル<small>ブラウザのタブと検索結果に出ます</small><input id="metaTitle" type="text"></label>
+    <label class="field">説明文<small>検索結果やSNSの紹介文に出ます</small><textarea id="metaDesc" rows="4"></textarea></label>
+
+    <h2>変更点</h2>
+    <ol id="changes" class="changes"><li class="empty">まだ変更はありません。</li></ol>
+    <button id="reset" class="btn ghost" type="button" disabled>変更をすべて取り消す</button>
+    <p class="foot">保存すると GitHub に履歴が残ります。前の状態にはいつでも戻せます。</p>
+  </aside>
+</div>
+
+<dialog id="dlg" aria-labelledby="dlgTitle">
+  <form method="dialog" class="dlg">
+    <h2 id="dlgTitle">この内容で保存しますか？</h2>
+    <ol id="dlgList" class="changes"></ol>
+    <label class="field">メモ（任意）<small>GitHub の履歴に残ります</small><input id="msg" type="text" maxlength="120" placeholder="例：誤字を修正"></label>
+    <p id="dlgNote" class="note"></p>
+    <div class="row">
+      <button value="cancel" class="btn ghost">戻る</button>
+      <button id="save" value="save" class="btn primary">保存する</button>
+    </div>
+  </form>
+</dialog>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="/admin/app.js" defer></script>
+</body>
+</html>

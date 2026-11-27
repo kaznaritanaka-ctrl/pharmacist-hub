@@ -1,0 +1,45 @@
+# main に push されたら、サイトを Cloudflare の Worker「pharmacist-hub」へ反映する。
+# 管理画面（/admin）からの保存も、GitHub 上での直接の編集も、ここを通って本番に出る。
+# 必要なもの: リポジトリの Secrets に CLOUDFLARE_API_TOKEN（Workers Scripts の編集権限だけのトークン）。
+name: Deploy to Cloudflare
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'README.md'
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Build
+        run: node tools/build.mjs
+      - name: Upload to Cloudflare
+        env:
+          CF_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT_ID: 0f9bb71bb987011462a91596f7cc9e6f
+        run: |
+          if [ -z "$CF_API_TOKEN" ]; then
+            echo "::error::Secrets に CLOUDFLARE_API_TOKEN がありません。"
+            exit 1
+          fi
+          # keep_bindings: 管理画面用の変数とシークレット（GITHUB_TOKEN など）を消さずに残す
+          curl -sS --fail-with-body -X PUT \
+            "https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/workers/scripts/pharmacist-hub" \
+            -H "Authorization: Bearer ${CF_API_TOKEN}" \
+            -F 'metadata={"main_module":"worker.js","compatibility_date":"2026-11-01","keep_bindings":["secret_text","plain_text"]};type=application/json' \
+            -F 'worker.js=@dist/worker.js;type=application/javascript+module' \
+            | jq '{success, errors}'

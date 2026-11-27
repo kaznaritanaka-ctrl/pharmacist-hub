@@ -50,4 +50,24 @@
 node tools/build.mjs   # dist/worker.js ができる（全ファイルを埋め込んだ1ファイル）
 ```
 
-dist/worker.js を Worker「pharmacist-hub」にアップロードすると本番に反映されます。Worker のコードは worker/index.js です。
+main に push すると、GitHub Actions（`.github/workflows/deploy.yml`）が dist/worker.js を作って Worker「pharmacist-hub」へアップロードします（1〜2分）。Worker のコードは worker/index.js と worker/admin.js です。
+
+## 管理画面（/admin）
+
+`https://pharma.ai-investment-research.net/admin` で、ページの文章をその場で直して保存できます。
+
+- 文章をクリックして直し、「確認して保存」で変更点を確かめてから保存します。タイトルと説明文は右側の欄で直します。
+- 保存は GitHub へのコミットとして記録され、上の自動反映で本番に出ます。履歴から元に戻せます。
+- タグや広告コードは触らず、文章の部分だけを差し替えます。同じ文言の目次や構造化データ（FAQ など）も一緒に直ります。
+- メニューとフッターは全ページ共通なので、管理画面では直せません。
+
+入口は Cloudflare Access で守り、Worker 側でも Access のトークンを検証します。動かすには次の設定が要ります。
+
+| 設定 | 場所 | 中身 |
+|---|---|---|
+| `ACCESS_TEAM_DOMAIN` | Worker の変数 | Access のチーム名ドメイン（例: `xxxx.cloudflareaccess.com`） |
+| `ACCESS_AUD` | Worker の変数 | /admin 用 Access アプリの Application Audience (AUD) タグ |
+| `GITHUB_TOKEN` | Worker のシークレット | このリポジトリの Contents に読み書きできる fine-grained トークン |
+| `CLOUDFLARE_API_TOKEN` | GitHub の Secrets | Workers Scripts の編集権限だけを持つ Cloudflare の API トークン（自動反映用） |
+
+3つの Worker 設定が揃うまで、本番の /admin は「準備中」を表示します。プレビュー（`SOURCE_BASE` あり）では、保存できない見本として開きます。

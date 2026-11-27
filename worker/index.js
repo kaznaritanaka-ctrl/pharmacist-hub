@@ -5,6 +5,8 @@
 //   /llms-full.txt は全ページの Markdown をまとめたもの。
 // ファイルの中身は tools/build.mjs が ASSETS に埋め込む（本番）。プレビューでは env.SOURCE_BASE から読む。
 
+import { handleAdmin } from './admin.js';
+
 /* __ASSETS__ */
 
 const SITE = 'https://pharma.ai-investment-research.net';
@@ -96,6 +98,10 @@ export default {
     };
     if (env && env.SOURCE_BASE) base['X-Robots-Tag'] = 'noindex'; // プレビューは検索に載せない
     const send = (body, type, extra = {}) => new Response(body, { headers: { ...base, 'Content-Type': type, ...extra } });
+
+    // 管理画面（文章の修正）。Access の検証は handleAdmin の中で行う。
+    const admin = await handleAdmin(request, env, url, load);
+    if (admin) return admin;
 
     // 全ページまとめ（AIエージェント向け）
     if (path === '/llms-full.txt') {
