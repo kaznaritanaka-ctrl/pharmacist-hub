@@ -209,7 +209,11 @@ h1, h2, h3, h4 { margin: 0; font-weight: 700; line-height: 1.35; letter-spacing:
 .hero-eyebrow::before { content: ""; width: 28px; height: 1px; background: currentColor; }
 .hero h1 { font-size: var(--fs-3xl); line-height: 1.08; letter-spacing: -.02em; margin-bottom: 24px; }
 .hero h1 .line { display: block; overflow: hidden; padding-bottom: .04em; }
-.hero h1 .line > span { display: inline-block; }
+.hero h1 .line > span { display: inline-block; white-space: nowrap; word-break: keep-all; }
+/* 見出しは1行ごとに改行しない（「組み立て／る。」のように途中で折れないように）。
+   その代わり、文字の大きさを本文の列の幅に合わせて縮める（1行7文字分が入る大きさまで）。 */
+.hero-grid > div:first-child { container-type: inline-size; min-width: 0; }
+@supports (font-size: 1cqi) { .hero h1 { font-size: min(var(--fs-3xl), 14cqi); } }
 .hero-en { font-family: var(--f-serif); font-style: normal; font-size: clamp(24px, 2vw + 12px, 40px); color: var(--on-ink-soft); margin: 0 0 24px; line-height: 1.2; }
 .hero-sub { font-size: var(--fs-md); font-weight: 700; margin: 0 0 14px; }
 .hero-lead { color: var(--on-ink-soft); max-width: 36em; margin-bottom: 36px; }
