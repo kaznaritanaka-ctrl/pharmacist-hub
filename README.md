@@ -1,6 +1,6 @@
 # pharmacist-hub
 
-薬剤師の資産形成・起業・FIREを目指すための総合支援サイト「薬剤師ハブ」（pharma.ai-investment-research.net）のソースです。
+薬剤師の資産形成・起業・FIREを目指すための総合支援サイト「FIRE薬剤師ラボ」（pharma.ai-investment-research.net）のソースです。
 
 ## 5つのコンテンツ
 

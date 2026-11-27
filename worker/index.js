@@ -1,4 +1,4 @@
-// worker/index.js — 薬剤師ハブの配信 Worker
+// worker/index.js — FIRE薬剤師ラボの配信 Worker
 // - 人間向け: HTML をそのまま返す。
 // - AIエージェント向け: 各ページの Markdown 版を返す（/strategy.md のように拡張子を .md に、
 //   または Accept: text/markdown で HTML と同じ URL を取得）。/llms.txt はサイトの索引、
@@ -79,7 +79,7 @@ export function htmlToMarkdown(html, path) {
   s = decode(s).split('\n').map((l) => l.replace(/[ \t]+/g, ' ').trim()).join('\n')
     .replace(/^-\s*$/gm, '').replace(/\)\[/g, ') [').replace(/\n{3,}/g, '\n\n')
     .replace(/^(- .*)\n\n(?=- )/gm, '$1\n').replace(/^(- .*)\n\n(?=- )/gm, '$1\n').trim();
-  return `---\ntitle: ${title}\nurl: ${SITE}${path}\ndescription: ${desc}\nsite: 薬剤師ハブ (${SITE}/)\n---\n\n${s}\n`;
+  return `---\ntitle: ${title}\nurl: ${SITE}${path}\ndescription: ${desc}\nsite: FIRE薬剤師ラボ (${SITE}/)\n---\n\n${s}\n`;
 }
 
 const pageFor = (p) => (p === '/' || p === '/index' ? 'index.html' : p.slice(1));

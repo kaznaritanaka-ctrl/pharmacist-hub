@@ -1,4 +1,4 @@
-# 薬剤師ハブ — 検索エンジンと AI エージェントの巡回を歓迎します。
+# FIRE薬剤師ラボ — 検索エンジンと AI エージェントの巡回を歓迎します。
 # AIエージェント向けの索引: https://pharma.ai-investment-research.net/llms.txt
 User-agent: *
 Allow: /
