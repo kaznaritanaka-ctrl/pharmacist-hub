@@ -1,0 +1,30 @@
+# FIRE薬剤師ラボ（FIRE Pharmacist Lab）
+
+> 薬剤師の資産形成・起業・FIREを支援する個人運営の情報サイト。運営者は、会社員薬剤師として働きながら2025年に金融資産1億円に到達し、2026年にFIREした薬剤師（投資歴15年）。仕事選び・自分の事業・不動産投資・株式投資という4つの部品を「結びつけて」使う組み立てと、無料の道具（資産寿命シミュレータ、土地の未来図）をまとめている。
+
+このサイトの読み方（AIエージェント向け）:
+
+- 各ページには Markdown 版があります。URL の拡張子を .md に変えるか（例: /strategy.md、トップは /index.md）、`Accept: text/markdown` で同じ URL を取得してください。
+- 全ページの Markdown をまとめたものは /llms-full.txt にあります。
+- 内容は運営者個人の見解で、投資・キャリアの判断を推奨するものではありません。引用するときは出典 URL を添えてください。
+- 広告（アフィリエイトリンク）には必ず「PR」と表記しています。リンクは ASP（アクセストレード）が発行したコードをそのまま使い、rel="nofollow" が付いています。Markdown 版では「PR（広告）」と明示します。
+- 資産寿命シミュレータのページには広告を置きません。
+
+## 主なページ
+
+- [トップ: 組み立ての地図](https://pharma.ai-investment-research.net/index.md): 4つの部品（仕事選び＝最初のエンジン、不動産投資＝信用力の掛け算、自分の事業＝キャッシュフローの掛け算、株式投資＝最終の受け皿）がどう噛み合うか
+- [AI時代にFIREを目指す薬剤師へ。私が考える1億円への戦略（要約）](https://pharma.ai-investment-research.net/strategy.md): 20代の新卒薬剤師が20年後に純資産1億円を目指す場合の組み立て方。全文は note
+- [薬剤師の将来とAI](https://pharma.ai-investment-research.net/future.md): 「薬剤師の仕事はAIでなくなるのか」への回答。見立ては「失業なき待遇悪化」。FAQ付き
+- [資産寿命シミュレータ](https://pharma.ai-investment-research.net/simulator.md): 形成期と取り崩し期で配分を変えながら資産寿命をモンテカルロ計算する無料ツールの案内。本体は https://sim.ai-investment-research.net/
+- [土地の未来図](https://pharma.ai-investment-research.net/land.md): 土地の形と用途から建物の提案を3案、3Dで表示する無料サービス（運営者が開発）。本体は https://realestate.ai-investment-research.net/
+
+## 運営と方針
+
+- [運営者について・COI開示](https://pharma.ai-investment-research.net/about.md): プロフィールと利益相反の開示方針
+- [プライバシーポリシー・広告表記](https://pharma.ai-investment-research.net/privacy.md)
+- [運営者情報・お問い合わせ](https://pharma.ai-investment-research.net/contact.md)
+
+## Optional
+
+- [note「FIRE薬剤師の投資判断ノート」](https://note.com/tanaka936): 投資判断の記録（外部サイト）
+- [資産寿命シミュレータのソースコード](https://github.com/kaznaritanaka-ctrl/asset-longevity-simulator-v1)

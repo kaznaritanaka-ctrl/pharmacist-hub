@@ -2,86 +2,167 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>資産寿命シミュレータのご案内 | FIRE薬剤師ラボ</title>
 <meta name="description" content="形成期と取り崩し期で資産配分を変えながら資産寿命を確認する、無料のモンテカルロ・シミュレータの案内ページです。">
 <link rel="canonical" href="https://pharma.ai-investment-research.net/simulator.html">
+<link rel="alternate" type="text/markdown" href="/simulator.md" title="このページのMarkdown版（AIエージェント向け）">
+<meta property="og:site_name" content="FIRE薬剤師ラボ">
 <meta property="og:title" content="資産寿命シミュレータのご案内 | FIRE薬剤師ラボ">
 <meta property="og:description" content="形成期と取り崩し期で資産配分を変えながら資産寿命を確認する、無料のモンテカルロ・シミュレータの案内ページです。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://pharma.ai-investment-research.net/simulator.html">
+<meta property="og:locale" content="ja_JP">
 <meta name="twitter:card" content="summary">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2323785f'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='white'%3E%E8%96%AC%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="style.css">
+<meta name="twitter:site" content="@aipharmainvest">
+<meta name="theme-color" content="#0b1220">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b1220'/%3E%3Crect x='6' y='6' width='9' height='9' rx='2' fill='%234fe0a5'/%3E%3Crect x='17' y='6' width='9' height='9' rx='2' fill='none' stroke='%23f3f1ea' stroke-width='1.3'/%3E%3Crect x='6' y='17' width='9' height='9' rx='2' fill='none' stroke='%23f3f1ea' stroke-width='1.3'/%3E%3Crect x='17' y='17' width='9' height='9' rx='2' fill='%23f3f1ea'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://pharma.ai-investment-research.net/#website","url":"https://pharma.ai-investment-research.net/","name":"FIRE薬剤師ラボ","alternateName":"FIRE Pharmacist Lab","description":"薬剤師の資産形成・起業・FIREを支援する情報サイト。組み立ての地図と、資産寿命シミュレータなどの道具をまとめています。","inLanguage":"ja","publisher":{"@id":"https://pharma.ai-investment-research.net/#operator"}},{"@type":"Person","@id":"https://pharma.ai-investment-research.net/#operator","name":"田中","jobTitle":"薬剤師","description":"会社員薬剤師として働きながら資産形成を進め、2025年に金融資産1億円に到達し、2026年にFIRE。投資歴15年。","url":"https://pharma.ai-investment-research.net/about.html","sameAs":["https://note.com/tanaka936","https://x.com/aipharmainvest"]},{"@type":"WebPage","@id":"https://pharma.ai-investment-research.net/simulator.html#webpage","url":"https://pharma.ai-investment-research.net/simulator.html","name":"資産寿命シミュレータのご案内 | FIRE薬剤師ラボ","description":"形成期と取り崩し期で資産配分を変えながら資産寿命を確認する、無料のモンテカルロ・シミュレータの案内ページです。","isPartOf":{"@id":"https://pharma.ai-investment-research.net/#website"},"breadcrumb":{"@id":"https://pharma.ai-investment-research.net/simulator.html#breadcrumb"},"inLanguage":"ja","dateModified":"2026-11-27"},{"@type":"WebApplication","@id":"https://pharma.ai-investment-research.net/simulator.html#app","name":"資産寿命シミュレータ","url":"https://sim.ai-investment-research.net/","applicationCategory":"FinanceApplication","operatingSystem":"Web","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"description":"形成期と取り崩し期で資産配分を変えながら、資産が何歳まで持つかを年次モンテカルロ計算で確認できる無料のツール。","author":{"@id":"https://pharma.ai-investment-research.net/#operator"},"codeRepository":"https://github.com/kaznaritanaka-ctrl/asset-longevity-simulator-v1","inLanguage":"ja"},{"@type":"BreadcrumbList","@id":"https://pharma.ai-investment-research.net/simulator.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"トップ","item":"https://pharma.ai-investment-research.net/"},{"@type":"ListItem","position":2,"name":"資産寿命シミュレータ","item":"https://pharma.ai-investment-research.net/simulator.html"}]}]}</script>
+<script src="/site.js" defer></script>
 </head>
 <body>
-<header class="site-header">
-  <div class="wrap">
-    <a class="site-name" href="index.html">FIRE薬剤師ラボ</a>
-    <nav class="site-nav">
-      <a href="strategy.html">1億円への戦略</a>
-      <a href="simulator.html">資産寿命シミュレータ</a>
-      <a href="land.html">土地の未来図</a>
-      <a href="future.html">将来とAI</a>
-      <a class="nav-sub" href="about.html">運営者について</a>
-      <a class="nav-sub" href="privacy.html">プライバシーポリシー</a>
-      <a class="nav-sub" href="contact.html">お問い合わせ</a>
+<a class="skip-link" href="#content">本文へ移動</a>
+<div class="shell">
+  <aside class="sidebar" aria-label="サイドパネル">
+    <a class="brand" href="/" aria-label="FIRE薬剤師ラボ トップへ"><svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect x="1" y="1" width="13" height="13" rx="3" fill="#4fe0a5"/><rect x="18" y="1" width="13" height="13" rx="3" fill="none" stroke="#f3f1ea" stroke-width="1.5"/><rect x="1" y="18" width="13" height="13" rx="3" fill="none" stroke="#f3f1ea" stroke-width="1.5"/><rect x="18" y="18" width="13" height="13" rx="3" fill="#f3f1ea"/></svg><span class="brand-name"><b>FIRE薬剤師ラボ</b><small>FIRE Pharmacist Lab</small></span></a>
+    <p class="side-tagline">Freedom is assembled.</p>
+    <nav class="side-nav" aria-label="メインメニュー">
+      <h2>Contents</h2>
+      <ul>
+          <li><a href="/"><span class="no">00</span>トップ</a></li>
+          <li><a href="/strategy.html"><span class="no">01</span>1億円への戦略</a></li>
+          <li><a href="/simulator.html" aria-current="page"><span class="no">02</span>資産寿命シミュレータ<span class="tag">Tool</span></a></li>
+          <li><a href="/land.html"><span class="no">03</span>土地の未来図<span class="tag">Tool</span></a></li>
+          <li><a href="/future.html"><span class="no">04</span>薬剤師の将来とAI</a></li>
+          <li><a href="https://note.com/tanaka936" rel="noopener"><span class="no">05</span>投資の記録（note）<span class="tag">↗</span></a></li>
+      </ul>
+      <h2>About</h2>
+      <ul class="sub">
+          <li><a href="/about.html">運営者について</a></li>
+          <li><a href="/privacy.html">プライバシーポリシー・広告表記</a></li>
+          <li><a href="/contact.html">お問い合わせ</a></li>
+      </ul>
     </nav>
+    <a class="btn btn-sm side-cta" href="/simulator.html">資産寿命を試算する <span class="arr" aria-hidden="true">→</span></a>
+    
+    <p class="side-foot">© 2026 FIRE薬剤師ラボ<br>個人運営 · <a href="/llms.txt" style="color:inherit">llms.txt</a></p>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar-row">
+        <a class="brand" href="/" aria-label="FIRE薬剤師ラボ トップへ"><svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect x="1" y="1" width="13" height="13" rx="3" fill="#4fe0a5"/><rect x="18" y="1" width="13" height="13" rx="3" fill="none" stroke="#f3f1ea" stroke-width="1.5"/><rect x="1" y="18" width="13" height="13" rx="3" fill="none" stroke="#f3f1ea" stroke-width="1.5"/><rect x="18" y="18" width="13" height="13" rx="3" fill="#f3f1ea"/></svg><span class="brand-name"><b>FIRE薬剤師ラボ</b><small>FIRE Pharmacist Lab</small></span></a>
+        <a class="topbar-link" href="/contact.html">Contact</a>
+      </div>
+      <nav class="tabs" aria-label="メニュー切り替え">
+      <a href="/">トップ</a>
+      <a href="/strategy.html">1億円への戦略</a>
+      <a href="/simulator.html" aria-current="page">シミュレータ<span class="tag">Tool</span></a>
+      <a href="/land.html">土地の未来図<span class="tag">Tool</span></a>
+      <a href="/future.html">将来とAI</a>
+      <a href="https://note.com/tanaka936" rel="noopener">note<span class="tag">↗</span></a>
+      <a href="/about.html">運営者</a>
+      </nav>
+    </header>
+    <main id="content">
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb mono" aria-label="パンくずリスト"><ol><li><a href="/">Top</a></li><li aria-current="page">Simulator</li></ol></nav>
+        <p class="eyebrow mono">Tool · 無料 · 登録不要</p>
+        <h1>資産寿命シミュレータ</h1>
+        <p class="lead">「NISA貧乏か老後貧乏か」を感覚で悩む前に、一度計算してみるための道具です。資産形成の途中（形成期）と、FIRE後の取り崩し（取り崩し期）で資産配分を変えながら、資産が何歳まで持つかを年次モンテカルロ計算で確認できます。</p>
+        
+      </div>
+    </section>
+    <div class="container">
+      <div class="article-layout" style="grid-template-columns:1fr">
+        <div>
+          <section class="tool-frame" aria-label="資産寿命シミュレータ（操作できます）">
+            <div class="tool-frame-bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="mono">sim.ai-investment-research.net</span><a href="https://sim.ai-investment-research.net/" target="_blank" rel="noopener">新しいタブで開く <span aria-hidden="true">↗</span></a></div>
+            <iframe src="https://sim.ai-investment-research.net/" title="資産寿命シミュレータ" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <p class="fallback">表示されない場合は、<a href="https://sim.ai-investment-research.net/" rel="noopener">資産寿命シミュレータ（公開中の本体）</a>を直接開いてください。</p>
+          </section>
+          <div class="prose">
+          <section class="tldr" aria-labelledby="tldr">
+            <h2 id="tldr">要点 · Key points</h2>
+            <ul>
+              <li>形成期と取り崩し期で配分を変えながら、資産が何歳まで持つかを年次モンテカルロ計算で確かめる無料ツールです。</li>
+              <li>資産枯渇だけでなく、自分で決めた条件への抵触も「計画未達」として判定します。</li>
+              <li>ソースコードと計算モデルの前提は GitHub で公開しています。将来の成果を保証するものではありません。</li>
+            </ul>
+          </section>
+          <h2 id="features">できること</h2>
+          <ul class="feature-grid">
+            <li><b>2つの期間で配分を切り替え</b>形成期・取り崩し期ごとに、資産配分とプリセットを設定できます。</li>
+            <li><b>条件を細かく入れる</b>積立、支出、年金、売却時の実効税率、名目／実質リターンを条件として入れられます。</li>
+            <li><b>「計画未達」も判定</b>結果は資産枯渇の有無だけでなく、ご自身が指定した条件への抵触も「計画未達」として判定します。</li>
+            <li><b>幅で見る</b>シミュレーションの95%推定区間や、年齢別の未達経路、代表シナリオを確認できます。</li>
+            <li><b>URLで共有</b>条件は URL フラグメントで共有できます（共有先で保存済みの設定を自動で上書きしません）。</li>
+          </ul>
+
+          <h2 id="sources">入手先と紹介記事</h2>
+          <p>シミュレータは無料で公開しています。ソースコードは GitHub で公開しており、計算モデルの前提もリポジトリ内の README に記載しています。</p>
+          <ul>
+            <li>ソースコード（GitHub）：<a href="https://github.com/kaznaritanaka-ctrl/asset-longevity-simulator-v1" rel="noopener">kaznaritanaka-ctrl/asset-longevity-simulator-v1</a></li>
+            <li>紹介記事（note）：<a href="https://note.com/tanaka936/n/n0bbc6936c74b" rel="noopener">「NISA貧乏か老後貧乏か、の前に一度計算すればいい（シミュレータあり）」</a> — 5,000万円FIREの条件を実際に入れ替えて検討した記録です。</li>
+          </ul>
+          <p>シミュレータ本体は、次のリンクから開けます：<a href="https://sim.ai-investment-research.net/" rel="noopener">資産寿命シミュレータ（公開中の本体）</a></p>
+
+          <h2 id="model">計算モデルの前提（要点）</h2>
+          <ul>
+            <li>資産クラスごとの算術平均リターンと年率ボラティリティ、相関行列から、相関付き正規乱数で年次リターンを生成します。</li>
+            <li>年1回リバランスし、FIRE年齢の前後で配分を切り替えます。</li>
+            <li>税率は、収益の厳密な課税所得計算ではなく、売却額に対する実効税負担率として扱います。</li>
+            <li>本ツールは将来の成果を保証するものではなく、投資・税務・法務上の助言ではありません。</li>
+          </ul>
+
+          <h2 id="data">データ出典と帰属表示</h2>
+          <div class="note-box">
+            <p>計算の参照データには、株式・国債・手形、CPI、対ドル為替について <strong>Jordà–Schularick–Taylor Macrohistory Database</strong>（<a href="https://www.macrohistory.net/database/" rel="noopener">macrohistory.net</a>）を使用しています。同データベースは <strong>CC BY-NC-SA 4.0</strong> の条件で提供されており、帰属表示・非営利利用・同一条件での共有が求められます。リターン系列の出典論文は Òscar Jordà, Katharina Knoll, Dmitry Kuvshinov, Moritz Schularick, Alan M. Taylor, “The Rate of Return on Everything, 1870–2015,” <em>Quarterly Journal of Economics</em> 134(3), 2019 です。金価格の長期系列には World Bank Commodity Price Data（The Pink Sheet）を参照しています。</p>
+            <p>このページには、広告およびアフィリエイトリンクは掲載していません。</p>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-top">
+          <p class="footer-claim">自由は、組み立てられる。<span class="serif">Freedom is assembled.</span></p>
+          <nav aria-label="コンテンツ">
+            <h2>Contents</h2>
+            <ul>
+              <li><a href="/strategy.html">1億円への戦略</a></li>
+              <li><a href="/simulator.html">資産寿命シミュレータ</a></li>
+              <li><a href="/land.html">土地の未来図</a></li>
+              <li><a href="/future.html">薬剤師の将来とAI</a></li>
+            </ul>
+          </nav>
+          <nav aria-label="運営と方針">
+            <h2>About</h2>
+            <ul>
+              <li><a href="/about.html">運営者について（COI開示）</a></li>
+              <li><a href="/privacy.html">プライバシーポリシー・広告表記</a></li>
+              <li><a href="/contact.html">お問い合わせ</a></li>
+              <li><a href="https://note.com/tanaka936" rel="noopener">note「FIRE薬剤師の投資判断ノート」</a></li>
+              <li><a href="https://x.com/aipharmainvest" rel="noopener">X（@aipharmainvest）</a></li>
+            </ul>
+          </nav>
+        </div>
+        <p class="footer-word" aria-hidden="true">FIRE Pharmacist Lab</p>
+        <div class="footer-bottom">
+          <span>© 2026 FIRE薬剤師ラボ（pharma.ai-investment-research.net）· 本サイトはPR（広告）を含む場合があります</span>
+          <span>For AI agents: <a href="/llms.txt">llms.txt</a> · <a href="/llms-full.txt">llms-full.txt</a> · <a href="/sitemap.xml">sitemap.xml</a></span>
+        </div>
+      </div>
+    </footer>
   </div>
-</header>
-
-<main>
-  <div class="wrap">
-    <h1>資産寿命シミュレータ</h1>
-    <p class="lead">「NISA貧乏か老後貧乏か」を感覚で悩む前に、一度計算してみるための道具です。資産形成の途中（形成期）と、FIRE後の取り崩し（取り崩し期）で資産配分を変えながら、資産が何歳まで持つかを年次モンテカルロ計算で確認できます。</p>
-
-    <h2>できること</h2>
-    <ul>
-      <li>形成期・取り崩し期ごとに、資産配分とプリセットを設定できます。</li>
-      <li>積立、支出、年金、売却時の実効税率、名目／実質リターンを条件として入れられます。</li>
-      <li>結果は資産枯渇の有無だけでなく、ご自身が指定した条件への抵触も「計画未達」として判定します。</li>
-      <li>シミュレーションの95%推定区間や、年齢別の未達経路、代表シナリオを確認できます。</li>
-      <li>条件は URL フラグメントで共有できます（共有先で保存済みの設定を自動で上書きしません）。</li>
-    </ul>
-
-    <h2>入手先と紹介記事</h2>
-    <p>シミュレータは無料で公開しています。ソースコードは GitHub で公開しており、計算モデルの前提もリポジトリ内の README に記載しています。</p>
-    <ul>
-      <li>ソースコード（GitHub）：<a href="https://github.com/kaznaritanaka-ctrl/asset-longevity-simulator-v1">kaznaritanaka-ctrl/asset-longevity-simulator-v1</a></li>
-      <li>紹介記事（note）：<a href="https://note.com/tanaka936/n/n0bbc6936c74b">「NISA貧乏か老後貧乏か、の前に一度計算すればいい（シミュレータあり）」</a> — 5,000万円FIREの条件を実際に入れ替えて検討した記録です。</li>
-    </ul>
-    <p>シミュレータ本体は、次のリンクから開けます：<a href="https://sim.ai-investment-research.net/">資産寿命シミュレータ（公開中の本体）</a></p>
-
-    <h2>計算モデルの前提（要点）</h2>
-    <ul>
-      <li>資産クラスごとの算術平均リターンと年率ボラティリティ、相関行列から、相関付き正規乱数で年次リターンを生成します。</li>
-      <li>年1回リバランスし、FIRE年齢の前後で配分を切り替えます。</li>
-      <li>税率は、収益の厳密な課税所得計算ではなく、売却額に対する実効税負担率として扱います。</li>
-      <li>本ツールは将来の成果を保証するものではなく、投資・税務・法務上の助言ではありません。</li>
-    </ul>
-
-    <h2>データ出典と帰属表示</h2>
-    <aside class="note-box">
-      <p>計算の参照データには、株式・国債・手形、CPI、対ドル為替について <strong>Jordà–Schularick–Taylor Macrohistory Database</strong>（<a href="https://www.macrohistory.net/database/">macrohistory.net</a>）を使用しています。同データベースは <strong>CC BY-NC-SA 4.0</strong> の条件で提供されており、帰属表示・非営利利用・同一条件での共有が求められます。リターン系列の出典論文は Òscar Jordà, Katharina Knoll, Dmitry Kuvshinov, Moritz Schularick, Alan M. Taylor, “The Rate of Return on Everything, 1870–2015,” <em>Quarterly Journal of Economics</em> 134(3), 2019 です。金価格の長期系列には World Bank Commodity Price Data（The Pink Sheet）を参照しています。</p>
-      <p>このページには、広告およびアフィリエイトリンクは掲載していません。</p>
-    </aside>
-  </div>
-</main>
-
-<footer class="site-footer">
-  <div class="wrap">
-    <nav>
-      <a href="index.html">トップ</a>
-      <a href="strategy.html">1億円への戦略</a>
-      <a href="simulator.html">資産寿命シミュレータ</a>
-      <a href="land.html">土地の未来図</a>
-      <a href="future.html">将来とAI</a>
-      <a href="about.html">運営者について</a>
-      <a href="privacy.html">プライバシーポリシー</a>
-      <a href="contact.html">お問い合わせ</a>
-    </nav>
-    <span>FIRE薬剤師ラボ（pharma.ai-investment-research.net）</span>
-  </div>
-</footer>
+</div>
 </body>
 </html>
