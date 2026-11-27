@@ -16,7 +16,7 @@
 - [AI時代にFIREを目指す薬剤師へ。私が考える1億円への戦略（要約）](https://pharma.ai-investment-research.net/strategy.md): 20代の新卒薬剤師が20年後に純資産1億円を目指す場合の組み立て方。全文は note
 - [薬剤師の将来とAI](https://pharma.ai-investment-research.net/future.md): 「薬剤師の仕事はAIでなくなるのか」への回答。見立ては「失業なき待遇悪化」。FAQ付き
 - [資産寿命シミュレータ](https://pharma.ai-investment-research.net/simulator.md): 形成期と取り崩し期で配分を変えながら資産寿命をモンテカルロ計算する無料ツールの案内。本体は https://sim.ai-investment-research.net/
-- [土地の未来図](https://pharma.ai-investment-research.net/land.md): 土地の形と用途から建物の提案を3案、3Dで表示する無料サービス（運営者が開発）。本体は https://realestate.ai-investment-research.net/
+- [土地の未来図](https://pharma.ai-investment-research.net/land.md): 土地の形と用途から建物の提案を3案、3Dで表示する無料ツール（運営者が開発）。本体は https://realestate.ai-investment-research.net/
 
 ## 運営と方針
 
