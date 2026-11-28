@@ -11,11 +11,17 @@ const files = [
   ...readdirSync(join(root, 'admin')).filter((f) => /\.(html|css|js)$/.test(f)).map((f) => `admin/${f}`), // 管理画面
 ];
 const assets = Object.fromEntries(files.map((f) => [f, readFileSync(join(root, f), 'utf8')]));
+// バイナリ（OGP画像）は base64 で埋め込む
+const b64assets = {};
+for (const f of ['ogp.png']) {
+  try { b64assets[f] = readFileSync(join(root, f)).toString('base64'); } catch { /* 画像が無ければ無し */ }
+}
 // worker/admin.js を index.js に取り込んで1ファイルにする（Cloudflare には1ファイルでアップロードする）
 const admin = readFileSync(join(root, 'worker/admin.js'), 'utf8').replace(/^export /gm, '');
 const src = readFileSync(join(root, 'worker/index.js'), 'utf8')
   .replace("import { handleAdmin } from './admin.js';", () => admin);
-const out = src.replace('/* __ASSETS__ */', () => `const ASSETS = ${JSON.stringify(assets)};`);
+const out = src.replace('/* __ASSETS__ */', () => `const ASSETS = ${JSON.stringify(assets)};`)
+  .replace('/* __B64_ASSETS__ */', () => `const B64_ASSETS = ${JSON.stringify(b64assets)};`);
 mkdirSync(join(root, 'dist'), { recursive: true });
 writeFileSync(join(root, 'dist/worker.js'), out);
 console.log(`dist/worker.js: ${files.length} files, ${out.length} bytes`);

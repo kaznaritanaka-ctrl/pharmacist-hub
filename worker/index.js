@@ -9,6 +9,8 @@ import { handleAdmin } from './admin.js';
 
 /* __ASSETS__ */
 
+/* __B64_ASSETS__ */
+
 const SITE = 'https://pharma.ai-investment-research.net';
 const PAGES = ['index.html', 'strategy.html', 'simulator.html', 'land.html', 'future.html', 'about.html', 'privacy.html', 'contact.html'];
 const TYPES = {
@@ -102,6 +104,14 @@ export default {
     // 管理画面（文章の修正）。Access の検証は handleAdmin の中で行う。
     const admin = await handleAdmin(request, env, url, load);
     if (admin) return admin;
+
+    // OGP画像（バイナリは base64 埋め込みから復元して返す）
+    if (path === '/ogp.png' && typeof B64_ASSETS !== 'undefined' && B64_ASSETS && B64_ASSETS['ogp.png']) {
+      const bin = atob(B64_ASSETS['ogp.png']);
+      const bytes = new Uint8Array(bin.length);
+      for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+      return send(bytes, 'image/png');
+    }
 
     // 全ページまとめ（AIエージェント向け）
     if (path === '/llms-full.txt') {
